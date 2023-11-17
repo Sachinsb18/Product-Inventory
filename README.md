@@ -12,6 +12,12 @@ API for an ecommerce platform admin to manage product inventory
 
 # API Endpoints
 
+API to create an admin 
+URL [POST]: api/user/signup
+
+API to login as admin
+URL [POST]: api/user/login
+
 API to add products to the database
 URL [POST]: api/products/create
 
