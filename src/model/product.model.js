@@ -1,6 +1,8 @@
-import { ObjectId } from "bson";
+// Schema creation for product
+
 import mongoose from "mongoose";
 
+// creating schema
 const productSchema = new mongoose.Schema({
     id:{
         type:Number,
@@ -17,5 +19,6 @@ const productSchema = new mongoose.Schema({
     
 });
 
+// create the moodel for products
 const Product = mongoose.model('Product',productSchema);
 export default Product;

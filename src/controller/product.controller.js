@@ -1,7 +1,10 @@
+// controller for the product to handle the request 
+
+// import proiduct repository
 import { createProduct , getAllProducts, removeProduct, update} from "../model/product.repository.js";
 
 
-
+// controller  function for creating new product
 const addProduct = async (req,res)=>{
    
     try{
@@ -13,6 +16,7 @@ const addProduct = async (req,res)=>{
     }
 }
 
+// controller function to fetch all the products
 const getProducts = async(req,res)=>{
     try{
         const products = await getAllProducts();
@@ -22,6 +26,8 @@ const getProducts = async(req,res)=>{
     }
 }
 
+
+// controller function to delete an product
 const remove = async (req,res)=>{
     try{
         const product = await removeProduct(req.params.id);
@@ -31,6 +37,8 @@ const remove = async (req,res)=>{
     }
 }
 
+
+// controller function to update product quantity
 const updateProduct = async (req,res) =>{
     const id = req.params.id;
     const {number} = req.query;
@@ -44,5 +52,6 @@ const updateProduct = async (req,res) =>{
 }
 
 
+// export the controller functions
 
 export {addProduct, getProducts, remove, updateProduct};

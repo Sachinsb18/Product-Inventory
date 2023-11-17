@@ -1,10 +1,17 @@
+// middleware for authentication of admin. so that no random user cant manipulate the inventory
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+// impoet jsonwebtoken for authenticating the admin
 import jwt from 'jsonwebtoken';
 
+// middleware function to check the user is admin or not
 const jwtAuth = (req, res, next) => {
   // 1. Read the token.
   const token = req.headers['authorization'];
 
-  // console.log(token);
+  
   // 2. if no token, return the error.
   if (!token) {
     return res.status(401).send('Unauthorized');
@@ -13,7 +20,7 @@ const jwtAuth = (req, res, next) => {
   try {
     const payload = jwt.verify(
       token,
-      'XqXQNla2jBCH9kuLz'
+      process.env.SECRET
     );
     req.userID = payload.userID;
   } catch (err) {
@@ -25,4 +32,5 @@ const jwtAuth = (req, res, next) => {
   next();
 };
 
+// export the middleware function
 export default jwtAuth;
