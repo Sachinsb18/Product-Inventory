@@ -13,8 +13,11 @@ const createProduct = async(data)=>{
     }
     try {
         const product = new Product(newProduct);
-        product.save();
-        return await Product.find({id:newProduct.id}).select('-_id'); // to hide displaying unique id to the admin
+         await product.save();
+        console.log(product.id);
+        const createdProduct = await Product.findOne({id:product.id}).select({_id:0, __v:0}); // to hide displaying unique id to the admin
+        console.log(createdProduct);
+        return createdProduct;
     }catch(err){
         console.log(err);
     }
@@ -23,7 +26,7 @@ const createProduct = async(data)=>{
 // function to get all the products in the inventory
 const getAllProducts = async()=>{
     try {
-        const products = await Product.find().select('-_id');
+        const products = await Product.find().select({_id:0, __v:0});
         return products;
     }catch(err){
         console.log(err);
@@ -57,7 +60,7 @@ const update = async(id,number)=>{
             {
                 new:true
             })
-            .select('-_id');
+            .select({_id:0, __v:0});
             
         return updatedProduct;
     }catch(err){
