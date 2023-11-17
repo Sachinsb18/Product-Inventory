@@ -14,9 +14,9 @@ const createProduct = async(data)=>{
     try {
         const product = new Product(newProduct);
          await product.save();
-        console.log(product.id);
+    
         const createdProduct = await Product.findOne({id:product.id}).select({_id:0, __v:0}); // to hide displaying unique id to the admin
-        console.log(createdProduct);
+        
         return createdProduct;
     }catch(err){
         console.log(err);
@@ -36,14 +36,11 @@ const getAllProducts = async()=>{
 // function to delete an product based on the id
 const removeProduct = async(id)=>{
     try {
-        const product = await Product.findOneAndDelete({id:id});
-        if(!product){
-            return `Product not found`;
-        }
-
+        const product = await Product.deleteOne({id:id});
+        
         // function to re-order the products id in sequential form
         updateSerialNumber(id);   
-
+        // console.log(product);
         return product;
     }catch(err){
         console.log(err);

@@ -32,5 +32,5 @@ API to update quantity of a product (can be incremented or decremented)
 URL [POST] : /products/:id/update_quantity/?number=__
 
 
-# Hosted link :
+# Hosted link : https://product-inventory-vqke.onrender.com
 
