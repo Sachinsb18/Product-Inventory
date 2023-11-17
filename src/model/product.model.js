@@ -2,7 +2,10 @@ import { ObjectId } from "bson";
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-    // id: ObjectId,
+    id:{
+        type:Number,
+        required:true
+    },
     name:{
         type:String,
         required:true
@@ -10,7 +13,8 @@ const productSchema = new mongoose.Schema({
     quantity:{
         type:Number,
         required:true
-    }
+    },       
+    
 });
 
 const Product = mongoose.model('Product',productSchema);

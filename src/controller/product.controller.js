@@ -3,13 +3,11 @@ import { createProduct , getAllProducts, removeProduct, update} from "../model/p
 
 
 const addProduct = async (req,res)=>{
-    const newProduct = {
-        name:req.body.name,
-        quantity:req.body.quantity
-    }
+   
     try{
-        const product = await createProduct(newProduct);
+        const product = await createProduct(req.body);
         res.status(201).json(product);
+        
     }catch(err){
         res.status(500).json({message:err.message});
     }

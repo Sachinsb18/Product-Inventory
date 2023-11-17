@@ -15,7 +15,7 @@ productRouter.delete('/:id',(req,res)=>{
     remove(req,res);
 });
 
-productRouter.put('/:id/update_quantity/?number=10',(req,res)=>{
+productRouter.post('/:id/update_quantity',(req,res)=>{
     updateProduct(req,res);
 });
 

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import connection from './config/mongoose.config.js';
 import userRouter from './src/router/user.route.js';
