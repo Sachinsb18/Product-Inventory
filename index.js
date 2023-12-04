@@ -12,6 +12,10 @@ const app = express();
 // use express json parser
 app.use(express.json());
 
+app.get("/",(req,res)=>{
+    res.write("Please copy the url and check the api using postman");
+})
+
 //  Route to user for signup or login
 app.use('/api/user',  userRouter)
 
