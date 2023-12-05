@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/",(req,res)=>{
-    res.write("Please copy the url and check the api using postman");
+    res.send("Please copy the url and check the api using postman");
 })
 
 //  Route to user for signup or login
